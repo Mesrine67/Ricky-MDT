@@ -1,0 +1,242 @@
+<html>
+    <head>
+        <title>Tech Development</title>
+        <link rel='stylesheet' href='https://use.fontawesome.com/releases/v6.1.2/css/all.css'>
+        <link rel="stylesheet" href="./css/style.css">
+    </head>
+    <body>
+
+        <div id="app">
+            <div class="notify">
+                <div class="title">
+                    <span>ERROR</span>
+                </div>
+                <div class="msg">
+                    <span>This is a message</span>
+                </div>
+            </div>
+    
+    
+            <div v-if="config!=false" class="navbar">
+                <div class="nomeFazione">{{config.Translate.title}}</div>
+                <div class="nomeUtente">{{this.officerInfo.name}} - {{this.officerInfo.grade.label}}</div>
+                <div class="idUtente">{{config.Translate.id}} {{this.officerInfo.id}}</div>
+            </div>
+    
+            <transition name="fadeIn">
+                <div v-if="schermata=='login'" class="schermataLogin">
+                    <div class="accessoOperatore">{{config.Translate.access_officer}}</div>
+                
+                    <div class="credentials">
+                        <input class="usernameInput" type="text" placeholder="Username" disabled>
+                        <input class="passwordInput" type="password" placeholder="Password" disabled>
+                    </div>
+                    <div class="login"><span>{{config.Translate.login}}</span></div>
+                </div>
+            </transition>
+
+            
+            <div class="schermataHome">
+                <div style="display: none;" class="leftBar">
+                    <div opzione="home" class="opzione" @click="home()">
+                        <div class="nomeOpzione">{{config.Translate.home}}</div>
+                    </div>
+                    <div opzione="databaseCittadini" class="opzione" @click="databaseCittadini()">
+                        <div class="nomeOpzione">{{config.Translate.citizen_db}}</div>
+                    </div>
+                    <div opzione="databaseVeicoli" class="opzione" @click="databaseVeicoli()">
+                        <div class="nomeOpzione">{{config.Translate.vehicle_db}}</div>
+                    </div>
+                    <div opzione="rapporti" class="opzione" @click="rapporti()">
+                        <div class="nomeOpzione">{{config.Translate.reports}}</div>
+                    </div>
+                    <div v-if="accessReport" opzione="listarapporti" class="opzione" @click="listarapporti()">
+                        <div class="nomeOpzione">{{config.Translate.all_reports}}</div>
+                    </div>
+                </div>
+
+                <transition name="fadeIn">
+                    <div v-if="schermata=='rapporti'" class="schermataRapporti">
+                        <div class="title">{{config.Translate.my_reports}}</div>
+                        <div class="containerReport">
+                            <div v-for="v in officerInfo.rapporti" class="report">
+                                <div class="data"><span>{{config.Translate.report_date}} {{v.data}}</span></div>
+                                <div @click="viewReport(v.rapporto)" class="view"><span>{{config.Translate.click_view}}</span></div>
+                            </div>
+                        </div>
+                        <div @click="addReport" class="addReport"><span>{{config.Translate.add_report}}</span></div>
+                    </div>
+                    </transition>
+
+                    <transition name="fadeIn">
+                        <div v-if="schermata=='listarapporti'" class="schermataRapporti">
+                            <div class="title">{{config.Translate.all_reports}}</div>
+                            <div class="containerReport">
+                                <div v-for="v in allReports" class="report">
+                                    <div class="data"><span>{{v.name}} - {{v.data}}</span></div>
+                                    <div @click="viewReport(v.rapporto, true)" class="view"><span>{{config.Translate.click_view}}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </transition>
+
+                <transition name="fadeIn">
+                <div v-if="schermata=='viewReport'" class="schermataViewReport">
+                    <textarea rows="4" cols="50" class="viewreport" placeholder="" disabled></textarea>
+                    <div @click="closeViewReport" class="addReport"><span>{{config.Translate.close}}</span></div>
+                </div>
+                </transition>
+
+                <transition name="fadeIn">
+                <div v-if="schermata=='creaRapporto'" class="containerAddReport">
+                    <textarea rows="4" cols="50" class="textaddreport" :placeholder="config.Translate.type_desc"></textarea>
+                    <div class="avviso">
+                        <div class="title2">{{config.Translate.attention}}</div>
+                        <div class="message">{{config.Translate.alert_msg}}</div>
+                    </div>
+                    <div @click="creaReport" class="addReport"><span>{{config.Translate.create_report}}</span></div>
+                </div>
+                </transition>
+
+                <transition name="fadeIn">
+                <div v-if="schermata=='home' && config!=false" class="informations">
+                    <div class="panel">
+                        <div class="title"><span>{{config.Translate.total_citizen_reg}}</span></div>
+                        <div class="number"><span>{{this.cittadini.length}}</span></div>
+                    </div>
+                    <div class="panel" style="float: right;">
+                        <div class="title"><span>{{config.Translate.total_veh_reg}}</span></div>
+                        <div class="number"><span>{{this.veicoli.length}}</span></div>
+                    </div>
+                    <div class="panel">
+                        <div class="title"><span>{{config.Translate.total_citizen_wanted}}</span></div>
+                        <div class="number"><span>{{this.personeRicercate}}</span></div>
+                    </div>
+                    <div class="panel" style="float: right;">
+                        <div class="title"><span>{{config.Translate.total_police}}</span></div>
+                        <div class="number"><span>{{this.officerNumber}}</span></div>
+                    </div>
+                </div>
+            </transition>
+            </div>
+
+            <transition name="fadeIn">
+            <div v-if="schermata == 'databaseVeicoli'" class="schermataDatabaseVeicoli">
+                <input id="SearchByInput" v-model="searchByPlate" type="text" :placeholder="config.Translate.search_by_plate">
+                <div class="containerVehicle">
+                    <div @click="infoPeople(v.identifier, true)" v-for="v in getVeicoliFromInput()" class="vehicle">
+                        <div class="plate">{{v.plate}}</div>
+                        <div class="name">{{v.owner}}</div>
+                    </div>
+                </div>
+            </div>
+            </transition>
+
+            <transition name="fadeIn">
+            <div v-if="schermata=='databaseCittadini'" class="schermataDatabaseCittadini">
+                <input id="SearchByInput" class="searchPeople" v-model="searchByName" type="text" :placeholder="config.Translate.search_by_name">
+                <div class="containerPeople">
+                    <div @click="infoPeople(v.identifier)" v-for="v in getCittadiniFromInput()" class="people">
+                        <div class="name">{{v.firstName}} {{v.lastName}}</div>
+                        <div class="dataOfBirth">{{v.dateOfBirth}}</div>
+                        <div v-if="v.wanted" class="wanted" style="color: #BE1D1D">{{config.Translate.wanted}}</div>
+                        <div v-else class="wanted" style="color:#39C223">{{config.Translate.not_wanted}}</div>
+                    </div>
+                </div>
+            </div>
+            </transition>
+
+            <transition name="fadeIn">
+            <div v-if="schermata=='infoPeople'" class="infoPeople">
+                <div class="infoPeople1">
+                    <div class="logoUtente"><div v-bind:style="loadPhoto()" class="imgUtente"></div></div>
+                    <div class="nomeUtente">{{this.playerSelezionato.firstName}} {{this.playerSelezionato.lastName}} - {{this.playerSelezionato.dateOfBirth}} - {{this.playerSelezionato.sesso}}</div>
+                    <div class="lavoro">{{playerSelezionato.job.label}} - {{playerSelezionato.job.grade.label}}</div>
+                    <div class="contoCorrente">{{config.Translate.bank}} {{playerSelezionato.contoBancario}}$</div>
+                    <div class="numeroVeicoli">{{config.Translate.veh_number}}  {{playerSelezionato.veicoli.length}}</div>
+                    <div class="numeroCase">{{config.Translate.property_number}} {{playerSelezionato.case.length}}</div>
+                    <div v-if="playerSelezionato.wanted" class="wanted" style="color:#BE1D1D">{{config.Translate.wanted}}</div>
+                    <div v-else class="wanted" style="color:#39C223">{{config.Translate.not_wanted}}</div>
+                </div>
+                <textarea rows="4" cols="50" class="note" :placeholder="config.Translate.no_note">{{playerSelezionato.note}}</textarea>
+                <div v-if="playerSelezionato.wanted" class="removeWanted" @click="removeWanted"><span>{{config.Translate.remove_wanted}}</span></div>
+                <div v-else class="addWanted" @click="addWanted"><span>{{config.Translate.add_wanted}}</span></div>
+                <div @click="fedinaPenale" class="fedinaPenale"><span>{{config.Translate.criminal_record}}</span></div>
+                <div class="listaVeicoli">
+                    <div class="title">
+                        <span>{{config.Translate.veh_list}}</span>
+                    </div>
+                    <div class="containerLista">
+                        <span v-for="v in playerSelezionato.veicoli">{{maiuscFirstLetter(v.model)}} - {{v.plate}}</span>
+                    </div>
+                </div>
+                <div class="listaCase">
+                    <div class="title">
+                        <span>{{config.Translate.property_list}}</span>
+                    </div>
+                    <div class="containerLista">
+                        <span v-for="v in playerSelezionato.case">{{v.name}} <i @click="setGps(v.x, v.y ,v.z)" style="margin-left: 1vh;" class="fas fa-location-dot"></i></span>
+                    </div>
+                </div>
+                <div class="listaMulte">
+                    <div class="title">
+                        <span>{{config.Translate.bill_list}}</span>
+                    </div>
+                    <div class="containerLista">
+                        <span v-for="v in playerSelezionato.multe">{{v.amount}}{{config.Translate.currency}} - {{v.date}} <i v-if="v.payed == 'unpaid'" style="margin-left: 1vh; color: #BE1D1D;" class="fas fa-x"></i><i v-else style="margin-left: 1vh; color: #39C223;" class="fas fa-check"></i></span>
+                    </div>
+                </div>
+
+                <div class="containerFedinaPenale">
+                
+
+                    <div class="background">
+                        <div @click="closeFedina()" class="closeButton"><span>{{config.Translate.close}}</span></div>
+                        <div @click="addFedina()" class="addFedina"><span>{{config.Translate.add}}</span></div>
+                        <div class="formatPenale">
+                            <div class="from"><span>{{config.Translate.from}}</span></div>
+                            <div class="reason"><span>{{config.Translate.reason}}</span></div>
+                            <div class="date"><span>{{config.Translate.date}}</span></div>
+                            <div class="action"><span>{{config.Translate.actions}}</span></div>
+                        </div>
+
+                        <div class="containerReati">
+                            <div v-for="(v,k) in playerSelezionato.reati" class="reato">
+                                <div class="from"><span>{{v.officer.name}}</span></div>
+                                <div class="reason2">{{v.reason}}</div>
+                                <div class="date"><span>{{v.date}}</span></div>
+                                <div class="action">
+                                    <span @click="deleteFedina(k)" class="delete"><i class="fas fa-trash"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+
+                    <div class="addPenale">
+                        <input type="text" :placeholder="config.Translate.type_reason" class="penaleReason">
+                        <div @click="closeAddFedina()" class="closeButton"><span>{{config.Translate.close}}</span></div>
+                        <div @click="addReato()" class="addFedina"><span>{{config.Translate.confirm}}</span></div>
+                    </div>
+
+                    <div class="sure">
+                        <div class="title">{{config.Translate.you_sure}}</div>
+                        <div @click="confirmSure()" class="confirm"><span>{{config.Translate.confirm}}</span></div>
+                        <div @click="closeSure()" class="cancel"><span>{{config.Translate.cancel}}</span></div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+            </transition>
+
+        </div>
+
+        <script src='https://code.jquery.com/jquery-3.1.1.min.js'></script>
+        <script src='https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js'></script>
+        <script src="./js/script.js"></script>
+    </body>
+</html>

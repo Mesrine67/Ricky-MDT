@@ -1,0 +1,1049 @@
+
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url(../fonts/proxima_nova.otf);
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    font-family: 'Proxima Nova';
+    font-weight: 600;
+    font-stretch: normal;
+    overflow: hidden;
+}
+
+body {
+}
+
+#app {
+    display: none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(135deg, #0C323E 0%, #0C0D0D 100%);
+    animation: 1s fadeIn ease;
+}
+
+.navBar {
+    position: absolute;
+    height: 10vh;
+    width: 100%;
+    background: radial-gradient(50% 50.00% at 50% 50.00%, #2E2D2D 0%, #292828 100%);
+    border-bottom: 0.0926vh solid #464646;
+}
+
+.navBar .nomeFazione {
+    position: absolute;
+    color: white;
+    top: 50%;
+    transform: translate(0, -50%);
+    font-size: 2.7778vh;
+    letter-spacing: 0.11em;
+    left: 1.7593vh;
+}
+
+.accessoOperatore {
+    position: absolute;
+    top: 25.3704vh;
+    left: 50%;
+    transform: translate(-50%);
+    color: white;
+    letter-spacing: 0.11em;
+    font-size: 4.6296vh;
+}
+
+.credentials {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 33.6111vh;
+    width: 44.537vh;
+    height: auto;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.credentials input {
+    position: relative;
+    width: 44.537vh;
+    height: 6.8519vh;
+    border-radius: 0.9259vh;
+    border: 0.0926vh solid #464646;
+    background: rgba(216, 216, 216, 0.05);
+    font-size: 2.3148vh;
+    padding: 1vh;
+    margin-bottom: 1vh;
+    color: white;
+    letter-spacing: 0.11em;
+}
+
+input:focus {
+    outline: none;
+}
+
+.login {
+    position: absolute;
+    top: 52.6852vh;
+    left: 50%;
+    transform: translate(-50%);
+    width: 21.7593vh;
+    height: 6.7593vh;
+    background: rgba(216, 216, 216, 0.05);
+    border: 0.0926vh solid #464646;
+    border-radius: 0.9259vh;
+    transition: 0.5S;
+}
+
+.login span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.3148vh;
+    letter-spacing: 0.11em;
+    color: #464646;
+}
+
+.login:hover {
+    cursor: pointer;
+    background-color: #d8d8d812;
+    transition: 0.5S;
+}
+
+.notify {
+    display: none;
+    position: absolute;
+    top: 17.037vh;
+    right: 2.5926vh;
+    width: 37.5926vh;
+    height: 8.6111vh;
+    background: linear-gradient(154deg, #B63434 0%, #932828 100%);
+    border-radius: 0.9259vh;
+    animation: notify1 1s ease;
+}
+
+@keyframes notify1 {
+    0% {
+        right: -45vh;
+    }
+}
+
+.notify .title {
+    position: absolute;
+    height: 2.6852vh;
+    width: 100%;
+    border-bottom: 0.0926vh solid #FF4343;
+}
+
+.notify .title span {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    left: 1vh;
+    letter-spacing: 0.11em;
+    color: white;
+}
+
+.notify .msg {
+    position: absolute;
+    top: 2.5926vh;
+    height: 5.9259vh;
+    width: 37.5926vh;
+}
+
+.notify .msg span {
+    position: absolute;
+    top: 1vh;
+    left: 1vh;
+    letter-spacing: 0.11em;
+    color: white;
+}
+
+.nomeUtente {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    letter-spacing: 0.11em;
+    font-size: 2.7778vh;
+    color: white
+}
+
+.idUtente {
+    position: absolute;
+    right: 1.7593vh;
+    top: 50%;
+    transform: translate(0, -50%);
+    letter-spacing: 0.11em;
+    font-size: 2.7778vh;
+    color: white 
+}
+
+.leftBar {
+    position: absolute;
+    top: 10vh;
+    height: 90vh;
+    width: 37.7778vh;
+    background: radial-gradient(50% 50.00% at 50% 50.00%, #2E2D2D 0%, #292828 100%);
+    border-right: 0.0926vh solid #464646;
+    border-top: 0.0926vh solid #464646;
+}
+
+.opzione {
+    position: relative;
+    height: 7.963vh;
+    width: 100%;
+    border-bottom: 0.0926vh solid #464646;
+    transition: 0.5s;
+}
+
+.opzione .nomeOpzione {
+    position: absolute;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: white;
+    letter-spacing: 0.11em;
+    font-size: 2.7778vh;
+}
+
+.opzione:hover {
+    transition: 0.5s;
+    background: rgb(4, 42, 71);
+    cursor: pointer;
+}
+
+.informations {
+    position: absolute;
+    top: 11.6667vh;
+    left: 41.6667vh;
+    width: 131.4074vh;
+    height: 78.2407vh;
+    animation: 1s fadeIn ease;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.fadeIn-enter-active {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.fadeIn-leave-active {
+    animation: fadeOut 0.5s ease forwards;
+}
+
+
+.panel {
+    position: relative;
+    float: left;
+    height: 19.4444vh;
+    width: 53.4259vh;
+    background: radial-gradient(50% 50.00% at 50% 50.00%, #2E2D2D 0%, #292828 100%);
+    border: 0.0926vh solid #464646;
+    border-radius: 0.9259vh;
+    margin-bottom: 4.3519vh;
+}
+
+.panel .title {
+    position: absolute;
+    width: 100%;
+    height: 4.7222vh;
+    border-bottom: 0.0926vh solid #464646;
+}
+
+.panel .title span {
+    position: absolute;
+    color: white;
+    letter-spacing: 0.11em;
+    top: 50%;
+    left: 1vh;
+    transform: translate(0, -50%);
+    font-size: 1.7778vh;
+}
+
+.panel .number {
+    position: absolute;
+    top: 4.7222vh;
+    height: 14.6296vh;
+    width: 100%;
+}
+
+textarea {
+    resize: none;
+}
+
+.panel .number span {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3.7037vh;
+    color: white;
+    letter-spacing: 0.11em;
+}
+
+.schermataDatabaseCittadini,
+.schermataDatabaseVeicoli {
+    position: absolute;
+    top: 10.0926vh;
+    left: 37.5926vh;
+    width: 139.9074vh;
+    height: 89.9074vh;
+}
+
+#SearchByInput {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    top: 2.5926vh;
+    width: 63.7037vh;
+    height: 8.2407vh;
+    background: radial-gradient(50% 50.00% at 50% 50.00%, #2E2D2D 0%, #292828 100%);
+    border-radius: 0.9259vh;
+    border: 0.0926vh solid #464646;
+    font-size: 2.7778vh;
+    padding: 1vh;
+    color: white;
+    letter-spacing: 0.11em;
+}
+
+::-webkit-scrollbar  {
+    display: none;
+}
+
+.containerPeople,
+.containerVehicle {
+    position: absolute;
+    top: 13.6111vh;
+    left: 50%;
+    transform: translate(-50%);
+    height: 73.0556vh;
+    width: 113.7963vh;
+    overflow-y: auto;
+}
+
+.people,
+.vehicle {
+    position: relative;
+    height: 10.0926vh;
+    width: 113.3519vh;
+    background: radial-gradient(50% 50.00% at 50% 50.00%, #2E2D2D 0%, #292828 100%);
+    border: 0.0926vh solid #464646;
+    border-radius: 0.9259vh;
+    color: white;
+    font-size: 2.7778vh;
+    letter-spacing: 0.11em;
+    margin-bottom: 1vh;
+}
+
+.people:hover,
+.vehicle:hover {
+    cursor: pointer;
+}
+
+.vehicle .name {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    right: 0.7407vh;
+}
+
+.people .name {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    left: 0.7407vh;
+}
+
+.vehicle .plate {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    left: 0.7407vh;
+}
+
+.people .dataOfBirth {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+}
+
+.people .wanted {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    right: 0.7407vh;
+}
+
+.infoPeople {
+    position: absolute;
+    top: 10.0926vh;
+    left: 37.8926vh;
+    width: 139.7222vh;
+    height: 90vh;
+    background: radial-gradient(50% 50.00% at 50% 50.00%, #2E2D2D 0%, #292828 100%);
+}
+
+.infoPeople .logoUtente {
+    position: absolute;
+    left: 1.8519vh;
+    top: 1.2037vh;
+    height: 18.7037vh;
+    width: 18.7037vh;
+    background: #D9D9D9;
+    border-radius: 0.9259vh;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.imgUtente {
+    position: absolute;
+    height: 450%;
+    width: 400%;
+    top: -50%;
+    left: -150%;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+}
+
+.infoPeople .nomeUtente {
+    position: absolute;
+    top: 2.5vh;
+    left: 91.5556vh;
+    letter-spacing: 0.11em;
+    width: 100%;
+}
+
+.infoPeople .lavoro {
+    position: absolute;
+    top: 5.5vh;
+    font-size: 2.3148vh;
+    color: #464646;
+    left: 21.8vh;
+    letter-spacing: 0.11em;
+}
+
+.infoPeople .contoCorrente {
+    position: absolute;
+    top: 8.5vh;
+    font-size: 2.3148vh;
+    color: #464646;
+    left: 21.8vh;
+    letter-spacing: 0.11em;
+}
+
+.infoPeople .numeroVeicoli {
+    position: absolute;
+    top: 11.5vh;
+    font-size: 2.3148vh;
+    color: #464646;
+    left: 21.8vh;
+    letter-spacing: 0.11em;
+}
+
+.infoPeople .numeroCase {
+    position: absolute;
+    top: 14.5vh;
+    font-size: 2.3148vh;
+    color: #464646;
+    left: 21.8vh;
+    letter-spacing: 0.11em;
+}
+
+.infoPeople .wanted {
+    position: absolute;
+    top: 17.5vh;
+    font-size: 2.3148vh;
+    color: #464646;
+    left: 21.8vh;
+    letter-spacing: 0.11em;
+}
+
+.infoPeople1 {
+    position: absolute;
+    height: 24.1vh;
+    width: 139.7222vh;
+    border-bottom: 0.0926vh solid #464646;
+}
+
+.listaVeicoli  {
+    position: absolute;
+    top: 26.0741vh;
+    left: 3.7037vh;
+    width: 34.2593vh;
+    height: 23.6111vh;
+    background: rgba(216, 216, 216, 0.05);
+    border-radius: 0.9259vh;
+    border: 0.0926vh solid #474646;
+}
+
+.listaMulte  {
+    position: absolute;
+    top: 26.0741vh;
+    right: 3.7037vh;
+    width: 34.2593vh;
+    height: 23.6111vh;
+    background: rgba(216, 216, 216, 0.05);
+    border-radius: 0.9259vh;
+    border: 0.0926vh solid #474646;
+}
+
+
+.listaCase {
+    position: absolute;
+    top: 26.0741vh;
+    left: 50%;
+    transform: translate(-50%);
+    width: 34.2593vh;
+    height: 23.6111vh;
+    background: rgba(216, 216, 216, 0.05);
+    border-radius: 0.9259vh;
+    border: 0.0926vh solid #474646;
+}
+
+.listaVeicoli .title,
+.listaCase .title,
+.listaMulte .title {
+    position: absolute;
+    font-size: 2.7778vh;
+    color: #FFF;
+    letter-spacing: 0.11em;
+    top: 0.9259vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.containerLista {
+    position: absolute;
+    top: 5.2963vh;
+    width: 34.2593vh;
+    height: 23.6111vh;
+    overflow-y: auto;
+}
+
+.containerLista span {
+    position: relative;
+    display: flex;
+    color: white;
+    width: 100%;
+    justify-content: center;
+    font-size: 1.3889vh;
+    letter-spacing: 0.11em;
+    margin-bottom: 1vh;
+}
+
+.note {
+    position: absolute;
+    text-align: start;
+    top: 55.1852vh;
+    left: 50%;
+    transform: translate(-50%);
+    width: 118.0556vh;
+    height: 25.3704vh;
+    background: rgba(216, 216, 216, 0.05);
+    border: 0.0926vh solid #464646;
+    border-radius: 0.9259vh;
+    font-size: 1.8519vh;
+    padding: 1vh;
+    color: white;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+.addWanted:hover,
+.listaCase:hover,
+.listaVeicoli:hover,
+.listaMulte:hover,
+.removeWanted:hover,
+.infoPeople1:hover,
+.fedinaPenale:hover,
+.closeButton:hover,
+.delete:hover,
+.addFedina:hover,
+.confirm:hover,
+.cancel:hover,
+.reato:hover,
+.formatPenale:hover,
+.view:hover,
+.report:hover,
+.addReport:hover {
+    cursor: pointer;
+}
+
+.addWanted {
+    position: absolute;
+    top: 82.1296vh;
+    left: 14.7222vh;
+    width: 49.3519vh;
+    height: 6.9444vh;
+    border-radius: 0.9259vh;
+    background: linear-gradient(156deg, #A8811D 0%, #7D631F 100%);
+    animation: 1s fadeIn ease;
+}
+
+.removeWanted {
+    position: absolute;
+    top: 82.1296vh;
+    left: 14.7222vh;
+    width: 49.3519vh;
+    height: 6.9444vh;
+    border-radius: 0.9259vh;
+    background: linear-gradient(156deg, #a81d1d 0%, #7d1f1f 100%);
+    animation: 1s fadeIn ease;
+}
+
+.fedinaPenale {
+    position: absolute;
+    top: 82.1296vh;
+    right: 14.7222vh;
+    width: 49.3519vh;
+    height: 6.9444vh;
+    border-radius: 0.9259vh;
+    background: linear-gradient(156deg, #7E7C77 0%, #403E39 100%);
+    animation: 1s fadeIn ease;
+}
+
+.addWanted span,
+.removeWanted span,
+.fedinaPenale span {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    color: white;
+    letter-spacing: 0.11em;
+    font-size: 2.7778vh;
+}
+
+@keyframes containerPenale {
+    0% {
+        top: -90vh;
+    }
+    100% {
+        top: 0;
+    }
+}
+
+.containerPenale1 {
+    animation: containerPenale1 3s ease !important;
+}
+
+@keyframes containerPenale1 {
+    0% {
+        top: 0;
+    }
+    100% {
+        top: -240vh;
+    }
+}
+
+.containerFedinaPenale {
+    display: none;
+    position: absolute;
+    top: 24.1vh;
+    width: 139.7222vh;
+    height: 66.1111vh;
+}
+
+.containerFedinaPenale .background {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(36deg, #895422 0%, rgba(255, 255, 255, 0.00) 100%);
+    backdrop-filter: blur(0.1852vh);
+    animation: containerPenale 1s ease;
+}
+
+.background .addFedina,
+.addPenale .addFedina {
+    position: absolute;
+    bottom: 1.1111vh;
+    left: 50%;
+    transform: translate(-50%);
+    border-radius: 0.9259vh;
+    border: 0.1852vh solid #464646;
+    background: radial-gradient(50% 50.00% at 50% 50.00%, #1B1818 0%, #292727 100%);
+    height: 6.5741vh;
+    width: 37.6852vh;
+}
+
+.background .closeButton,
+.addPenale .closeButton {
+    position: absolute;
+    top: 1.1111vh;
+    left: 50%;
+    transform: translate(-50%);
+    border-radius: 0.9259vh;
+    border: 0.1852vh solid #464646;
+    background: radial-gradient(50% 50.00% at 50% 50.00%, #1B1818 0%, #292727 100%);
+    height: 6.5741vh;
+    width: 37.6852vh;
+}
+
+.closeButton span,
+.addFedina span,
+.confirm span,
+.cancel span {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 3.7037vh;
+    letter-spacing: 0.11em;
+}
+
+.formatPenale {
+    position: absolute;
+    top: 8.8889vh;
+    left: 50%;
+    transform: translate(-50%);
+    width: 124.7222vh;
+    height: 5.0926vh;
+    border-radius: 0.9259vh;
+    background: linear-gradient(180deg, #2B2727 0%, #1F1D1D 100%);
+}
+
+.from {
+    position: absolute;
+    width: 11.2037vh;
+    height: 5.0926vh;
+}
+
+.action {
+    position: absolute;
+    right: 0;
+    width: 11.2037vh;
+    height: 5.0926vh;
+}
+
+.date {
+    position: absolute;
+    left: 77.1296vh;
+    height: 5.0926vh;
+    width: 20.3704vh;
+}
+
+.reason {
+    position: absolute;
+    left: 28.9815vh;
+    height: 5.0926vh;
+    width: 47.5926vh;
+}
+
+.date span,
+.action span {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    letter-spacing: 0.11em;
+    font-size: 1.8519vh;
+    text-align: center;
+}
+
+.reason span,
+.from span {
+    position: absolute;
+    left: 1vh;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    color: white;
+    letter-spacing: 0.11em;
+    font-size: 1.8519vh;
+    text-align: center;
+}
+
+.reato {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    width: 124.7222vh;
+    height: 5.0926vh;
+    border-radius: 0.9259vh;
+    background: linear-gradient(180deg, #2B2727 0%, #1F1D1D 100%);
+    margin-bottom: 1vh;
+}
+
+.reason2 {
+    position: absolute;
+    left: 28.9815vh;
+    height: 5.0926vh;
+    width: 47.5926vh;
+    color: white;
+    letter-spacing: 0.11em;
+    overflow-y: auto;
+    font-size: 1.8519vh;
+    padding: 1vh;
+}
+
+.action .delete {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 3.7037vh;
+    width: 4.0741vh;
+    border-radius: 0.463vh;
+    background: linear-gradient(41deg, #8A0707 0%, #BE3232 100%);
+}
+
+
+.addPenale,
+.sure {
+    display: none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(36deg, #895422 0%, rgba(255, 255, 255, 0.00) 100%);
+    backdrop-filter: blur(0.9259vh);
+    animation: containerPenale 1s ease;
+}
+
+.addPenale input {
+    position: absolute;
+    top: 10.6481vh;
+    left: 50%;
+    transform: translate(-50%);
+    height: 9.2593vh;
+    width: 71.9444vh;
+    border-radius: 0.9259vh;
+    border: 0.0926vh solid #464646;
+    background: radial-gradient(50% 50.00% at 50% 50.00%, #1B1818 0%, #292727 100%), rgba(216, 216, 216, 0.05);
+    color: white;
+    letter-spacing: 0.11em;
+    padding: 1vh;
+    font-size: 2.7037vh;
+}
+
+.addPenale input::placeholder {
+    letter-spacing: 0.11em;
+    color: #464646;
+}
+
+.sure .title {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: 6.4815vh;
+    color: white;
+    letter-spacing: 0.11em;
+    top: 12.7778vh;
+}
+
+.sure .confirm {
+    position: absolute;
+    width: 37.6852vh;
+    height: 6.5741vh;
+    left: 19.3519vh;
+    bottom: 3.7963vh;
+    border-radius: 0.9259vh;
+    border: 0.1852vh solid #464646;
+    background: radial-gradient(50% 50.00% at 50% 50.00%, #1B1818 0%, #292727 100%);
+}
+
+.sure .cancel {
+    position: absolute;
+    width: 37.6852vh;
+    height: 6.5741vh;
+    right: 19.3519vh;
+    bottom: 3.7963vh;
+    border-radius: 0.9259vh;
+    border: 0.1852vh solid #464646;
+    background: radial-gradient(50% 50.00% at 50% 50.00%, #1B1818 0%, #292727 100%);
+}
+
+.containerReati {
+    position: absolute;
+    top: 14.7963vh;
+    left: 50%;
+    transform: translate(-50%);
+    width: 124.7222vh;
+    height: 34.6296vh;
+    overflow-y: auto;
+}
+
+.schermataRapporti,
+.containerAddReport,
+.schermataViewReport {
+    position: absolute;
+    top: 10vh;
+    left: 37.7778vh;
+    height: 90vh;
+    width: 140vh;
+}
+
+.schermataRapporti .title {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    top: 2.5926vh;
+    font-size: 3.7037vh;
+    letter-spacing: 0.11em;
+    color: white;
+}
+
+.schermataRapporti .containerReport {
+    position: absolute;
+    top: 7.8704vh;
+    left: 25.1852vh;
+    width: 89.537vh;
+    height: 53.2407vh;
+    overflow-y: auto;
+}
+
+.report {
+    position: relative;
+    height: 6.6667vh;
+    width: 78.0556vh;
+    border-radius: 0.9259vh;
+    background: radial-gradient(50% 50.00% at 50% 50.00%, #1B1818 0%, #292727 100%);
+    margin-bottom: 1vh;
+}
+
+.report .data {
+    position: absolute;
+    height: 100%;
+    width: 51.9444vh;
+    border-right: 0.0926vh solid #464646;
+    display: flex;
+    align-items: center;
+    margin-left: 0.5vh;
+    color: white;
+    letter-spacing: 0.11em;
+    font-size: 1.8519vh;
+}
+
+.report .view {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 20.7407vh;
+    height: 5vh;
+    left: 54.537vh;
+    border-radius: 0.9259vh;
+    border: 0.0926vh solid #FFF;
+    background: radial-gradient(50% 50.00% at 50% 50.00%, #9F9797 0%, #A79E9E 43.23%, #B9B9B9 100%);
+}
+
+.view span {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3889vh;
+    letter-spacing: 0.11em;
+    color: white;
+}
+
+.addReport {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    height: 10.0926vh;
+    width: 58.9815vh;
+    bottom: 2.2222vh;
+    border-radius: 0.9259vh;
+    background: radial-gradient(50% 50.00% at 50% 50.00%, #1B1818 0%, #292727 100%);
+}
+
+.addReport span {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    letter-spacing: 0.11em;
+    font-size: 3.3148vh;
+}
+
+.containerAddReport .textaddreport,
+.schermataViewReport .viewreport {
+    position: absolute;
+    top: 7.4074vh;
+    left: 15.6481vh;
+    width: 103.4259vh;
+    height: 51.2963vh;
+    border-radius: 0.9259vh;
+    border: 0.0926vh solid #464646;
+    background: radial-gradient(50% 50.00% at 50% 50.00%, #1B1818 0%, #292727 100%);
+    padding: 1vh;
+    font-size: 2.3148vh;
+    letter-spacing: 0.11em;
+    color: white;
+}
+
+.avviso {
+    position: absolute;
+    top: 62.7778vh;
+    left: 22.5vh;
+    height: 10.9259vh;
+    width: 89.8148vh;
+    border-radius: 0.9259vh;
+    border: 0.0926vh solid #AC1D1D;
+    background: linear-gradient(38deg, #861B1B 0%, #C02E2E 100%);
+}
+
+.avviso .title2 {
+    position: absolute;
+    top: 0.3704vh;
+    left: 50%;
+    transform: translate(-50%);
+    color: #FF4343;
+    font-size: 3.7037vh;
+    letter-spacing: 0.11em;
+}
+
+.avviso .message {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.8519vh;
+    letter-spacing: 0.11em;
+    color: white;
+    width: 100%;
+    text-align: center;
+}
