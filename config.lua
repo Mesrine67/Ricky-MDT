@@ -6,7 +6,7 @@ Config.PoliceJob = {
     'polizia',
 }
 
-Config.HighGrade = 0 -- Rank number onwards that will be able to access the list of reports
+Config.HighGrade = 5 -- Rank number onwards that will be able to access the list of reports
 
 Config.HouseSystem = '' -- 'esx_property_old' or 'allhousing or 'esx_property_new'
 
