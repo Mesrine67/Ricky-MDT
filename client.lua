@@ -38,6 +38,7 @@ AddEventHandler('esx:setJob', function(job)
         }
     }
   })
+PlayerData.job = job
 end)
 
 RegisterNetEvent("esx:playerLoaded")
